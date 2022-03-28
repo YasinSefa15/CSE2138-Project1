@@ -38,6 +38,8 @@ public class File {
          for(int j = 0; j < input.size(); j++) {
              sizeOfDataType = scanner.nextInt();
              if(input.get(j).contains("u")) {
+                 unsignedConverter.UnsignedConverter(sizeOfDataType,input.get(j));
+                 unsignedConverter.convert();
                  System.out.println("unsigned " + input.get(j));
              }
              else if(input.get(j).contains("-")) {
