@@ -7,7 +7,7 @@ public class UnsignedConverter extends Hexadecimal{
     int sizeOfDataType;
     String value;
     String binaryValue="";
-    void UnsignedConverter(int sizeOfDataType,String value){
+    void changeValues(int sizeOfDataType,String value){
         this.sizeOfDataType=sizeOfDataType;
         this.value=value;
     }

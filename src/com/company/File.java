@@ -42,7 +42,7 @@ public class File {
         byteOrder= scanner.next();
          for(int j = 0; j < input.size(); j++) {
              if(input.get(j).contains("u")) {
-                 unsignedConverter.UnsignedConverter(sizeOfDataType,input.get(j));
+                 unsignedConverter.changeValues(sizeOfDataType,input.get(j));
                  unsignedConverter.convert();
                  System.out.println("unsigned " + input.get(j));
              }
