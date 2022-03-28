@@ -1,7 +1,9 @@
 package com.company;
 
 public class UnsignedConverter extends Hexadecimal{
-
+	
+	//murat
+		
     int sizeOfDataType;
     String value;
     String binaryValue="";
