@@ -1,6 +1,6 @@
 package com.company;
 
-public class FloatingConverter extends Hexadecimal{
+public class FloatingConverter extends BinaryController{
     int sizeOfDataType;
     String value;
     UnsignedConverter unsignedConverter;
@@ -20,7 +20,7 @@ public class FloatingConverter extends Hexadecimal{
         String floating = value.substring(value.indexOf(".") +1);
         String a = unsignedConverter.toBinary(decimal);
         //System.out.println("Decimal Binary : "  + a);
-        System.out.println("floating Binary : "  + floatingToBinary(floating));
+        //System.out.println("floating Binary : "  + floatingToBinary(floating));
     }
 
     public String  floatingToBinary(String value){

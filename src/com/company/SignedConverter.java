@@ -5,7 +5,6 @@ public class SignedConverter extends Hexadecimal {
     String value;
     UnsignedConverter unsignedConverter;
 
-
     public SignedConverter(UnsignedConverter unsignedConverter){
         this.unsignedConverter = unsignedConverter;
     }
@@ -16,7 +15,20 @@ public class SignedConverter extends Hexadecimal {
     }
 
     public void convert(){
-        String value = super.convertToHexa(signExtension(unsignedConverter.toBinary()));
+        String positiveValue;
+        int base;
+        String binary = "";
+        if (value.contains("-")){
+            positiveValue = value.substring(value.indexOf("-")+1);
+            base = (int) Math.floor(Math.log(Integer.parseInt(positiveValue)) / Math.log(2));
+            base = (int) Math.pow(2, 2 + base) - Integer.parseInt(positiveValue);
+            binary = unsignedConverter.toBinary(String.valueOf(base));
+            System.out.println(binary);
+        }else{
+            binary = unsignedConverter.toBinary(value);
+            System.out.println(binary);
+        }
+
     }
 
     public String signExtension(String value){
