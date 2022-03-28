@@ -18,6 +18,20 @@ public class SignedConverter extends Hexadecimal {
     public void convert(){
         //Burada dönüştürme işlemi yapılacak
         String binary=null;
-        super.convertToHexa(binary);
+        signExtension(value);
+        //super.convertToHexa(binary);
+    }
+
+    public String signExtension(String value){
+        int bits = 8 * sizeOfDataType;
+        String sign = value.startsWith("1") ? "1" : "0";
+        String extended = "";
+        if (value.length() < bits){
+            for (int i = 0 ; i < bits - value.length() ; i++){
+                extended = extended.concat(sign);
+            }
+            extended += value;
+        }
+        return extended;
     }
 }
