@@ -41,6 +41,7 @@ public class File {
                  unsignedConverter.UnsignedConverter(sizeOfDataType,input.get(j));
                  unsignedConverter.convert();
                  System.out.println("unsigned " + input.get(j));
+                 
              }
              else if(input.get(j).contains("-")) {
                  signedConverter.changeValues(sizeOfDataType,input.get(j));
@@ -49,10 +50,12 @@ public class File {
              }
              else if(input.get(j).contains(".")) {
                  System.out.println("floating " + input.get(j));
+                 unsignedConverter.convertToHexa("0100000111101001");
              }
              else {
                  System.out.println("unsigned " + input.get(j));
              }
         }
+         
     }
 }
