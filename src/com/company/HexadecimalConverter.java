@@ -1,6 +1,6 @@
 package com.company;
 
-abstract class Hexadecimal {
+abstract class HexadecimalConverter {
 
     void convertToHexa(String binary){
     	String temp = "",result = "";
