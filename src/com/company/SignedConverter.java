@@ -16,10 +16,7 @@ public class SignedConverter extends Hexadecimal {
     }
 
     public void convert(){
-        //Burada dönüştürme işlemi yapılacak
-        String binary=null;
-        signExtension(value);
-        //super.convertToHexa(binary);
+        String value = super.convertToHexa(signExtension(unsignedConverter.toBinary()));
     }
 
     public String signExtension(String value){
