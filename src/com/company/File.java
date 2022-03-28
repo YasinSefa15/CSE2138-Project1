@@ -35,20 +35,24 @@ public class File {
     public void Operation(ArrayList<String> input){
         scanner = new Scanner(System.in);
         int sizeOfDataType;
+        String byteOrder;
+        System.out.print("Byte ordering: ");
+        sizeOfDataType = scanner.nextInt();
+        System.out.print("Floating Point Size: ");
+        byteOrder= scanner.next();
          for(int j = 0; j < input.size(); j++) {
-             sizeOfDataType = scanner.nextInt();
              if(input.get(j).contains("u")) {
                  unsignedConverter.UnsignedConverter(sizeOfDataType,input.get(j));
                  unsignedConverter.convert();
                  System.out.println("unsigned " + input.get(j));
              }
+             else if(input.get(j).contains(".")) {
+                 System.out.println("floating " + input.get(j));
+             }
              else if(input.get(j).contains("-")) {
                  signedConverter.changeValues(sizeOfDataType,input.get(j));
                  signedConverter.convert();
                  System.out.println("signed " + input.get(j));
-             }
-             else if(input.get(j).contains(".")) {
-                 System.out.println("floating " + input.get(j));
              }
              else {
                  System.out.println("unsigned " + input.get(j));
