@@ -9,9 +9,11 @@ public class File {
 
     private Scanner scanner;
     private SignedConverter signedConverter;
+    private UnsignedConverter unsignedConverter;
 
     public File(){
-        signedConverter = new SignedConverter();
+        unsignedConverter = new UnsignedConverter();
+        signedConverter = new SignedConverter(unsignedConverter);
     }
 
     public ArrayList<String> Read(){
