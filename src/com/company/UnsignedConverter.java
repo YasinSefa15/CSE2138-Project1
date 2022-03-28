@@ -1,6 +1,6 @@
 package com.company;
 
-public class UnsignedConverter {
+public class UnsignedConverter extends Hexadecimal{
     String byteOrder;
     int sizeOfDataType;
     String value;
