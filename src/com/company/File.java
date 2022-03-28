@@ -10,9 +10,11 @@ public class File {
     private Scanner scanner;
     private SignedConverter signedConverter;
     private UnsignedConverter unsignedConverter;
+    private FloatingConverter floatingConverter;
 
     public File(){
         unsignedConverter = new UnsignedConverter();
+        floatingConverter = new FloatingConverter(unsignedConverter);
         signedConverter = new SignedConverter(unsignedConverter);
     }
 
@@ -35,27 +37,24 @@ public class File {
     public void Operation(ArrayList<String> input){
         scanner = new Scanner(System.in);
         int sizeOfDataType;
+         sizeOfDataType = 2;
          for(int j = 0; j < input.size(); j++) {
-             sizeOfDataType = scanner.nextInt();
              if(input.get(j).contains("u")) {
-                 unsignedConverter.UnsignedConverter(sizeOfDataType,input.get(j));
-                 unsignedConverter.convert();
-                 System.out.println("unsigned " + input.get(j));
-                 
+
+             }
+             else if(input.get(j).contains(".")) {
+                 floatingConverter.changeValues(sizeOfDataType,input.get(j));
+                 floatingConverter.convert();
              }
              else if(input.get(j).contains("-")) {
                  signedConverter.changeValues(sizeOfDataType,input.get(j));
                  signedConverter.convert();
-                 System.out.println("signed " + input.get(j));
              }
-             else if(input.get(j).contains(".")) {
-                 System.out.println("floating " + input.get(j));
-                 unsignedConverter.convertToHexa("0100000111101001");
-             }
+
              else {
-                 System.out.println("unsigned " + input.get(j));
+                 signedConverter.changeValues(sizeOfDataType,input.get(j));
+                 signedConverter.convert();
              }
         }
-         
     }
 }
