@@ -140,6 +140,8 @@ public class FloatingController extends BinaryController{
     	int exp = 0, expBits= 0;
     	String binaryExp = "",result = "";
     	
+    	
+    	
     	if(sizeOfDataType == 1)
     		expBits = 3;
     	else if(sizeOfDataType == 2)
@@ -148,20 +150,31 @@ public class FloatingController extends BinaryController{
     		expBits = 10;
     	else if(sizeOfDataType == 4)
     		expBits = 12;
-    	
-    	exp = exponent + (int)(Math.pow(2, expBits - 1) - 1);
+    		
+    	int bias = (int)(Math.pow(2, expBits - 1) - 1);
+
+        if (exponent < 0 && Math.abs(exponent) >= bias){
+        	for(int i = 0; i < expBits; i++) {
+        		binaryExp = binaryExp + "0";
+        	}
+        }else{
+            exp = exponent + bias;
+        }
     	
     	System.out.println("exponent : " + exponent);
     	
     	binaryExp = super.toBinary(Integer.toString(exp));
-    	
+    	while(binaryExp.length() < expBits) {
+    		binaryExp = "0" + binaryExp;
+    	}
     	if(sign) {
-    		result = "1" + binaryExp + fraction;
+    		result = "1" + binaryExp.substring(binaryExp.length() - expBits) + fraction;
     	}
     	else {
-    		result = "0" + binaryExp + fraction;
+    		result = "0" + binaryExp.substring(binaryExp.length() - expBits) + fraction;
     	}
-    	System.out.println(result);
+    	System.out.println("binaryExp: " + binaryExp.substring(binaryExp.length() - expBits));
+    	System.out.println("result : " + result);
     	return result;   		
     }
 

@@ -33,7 +33,6 @@ abstract class HexadecimalConverter {
     				
     			total = 0;
     		}
-			
     		
     	}
     	System.out.println("0x" + result);
