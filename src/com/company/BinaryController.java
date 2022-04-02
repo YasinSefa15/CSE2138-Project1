@@ -33,8 +33,8 @@ public class BinaryController extends HexadecimalConverter{
         String positiveValue = value.substring(value.indexOf("-")+1);
         int base = (int) Math.floor(Math.log(Integer.parseInt(positiveValue)) / Math.log(2));
         base = (int) Math.pow(2, 2 + base) - Integer.parseInt(positiveValue);
-        binary = this.signedExtension(toBinary(String.valueOf(base)));
-        return binary;
+        //binary = this.signedExtension(toBinary(String.valueOf(base)));
+        return toBinary(String.valueOf(base));
     }
 
     public String floatingToBinary(String value){

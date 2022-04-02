@@ -34,9 +34,10 @@ public class InputController {
     }
 
     public void operate(ArrayList<String> input){
-        Scanner scanner = new Scanner(System.in);
-        int sizeOfDataType;
-         sizeOfDataType = 2;
+	     Scanner scanner = new Scanner(System.in);
+	     int sizeOfDataType;
+	     sizeOfDataType = 1;
+	     
          for(int j = 0; j < input.size(); j++) {
              if(input.get(j).contains("u")) {
                  unsignedController.updateValues(sizeOfDataType,input.get(j));
@@ -44,7 +45,10 @@ public class InputController {
              }
              else if(input.get(j).contains(".")) {
                  floatingController.updateValues(sizeOfDataType,input.get(j));
+                 System.out.println(input.get(j));
                  floatingController.convert();
+                 floatingController.rounding(sizeOfDataType);
+                 floatingController.createFloatingPoint(sizeOfDataType);                
              }
              else if(input.get(j).contains("-")) {
                  signedController.updateValues(sizeOfDataType,input.get(j));
