@@ -46,7 +46,7 @@ public class FloatingController extends BinaryController{
                 this.fraction = floatingBinary.substring(floatingBinary.indexOf("1") + 1);
             }
         }
-        System.out.println("fraction: " + fraction);
+        //System.out.println("fraction: " + fraction);
         //¬"¬System.out.println("mantissa : " + this.mantissa + " fraction " + this.fraction + " exponent " + this.exponent);
     }
 
@@ -161,7 +161,7 @@ public class FloatingController extends BinaryController{
             exp = exponent + bias;
         }
     	
-    	System.out.println("exponent : " + exponent);
+    	//System.out.println("exponent : " + exponent);
     	
     	binaryExp = super.toBinary(Integer.toString(exp));
     	while(binaryExp.length() < expBits) {
@@ -173,8 +173,8 @@ public class FloatingController extends BinaryController{
     	else {
     		result = "0" + binaryExp.substring(binaryExp.length() - expBits) + fraction;
     	}
-    	System.out.println("binaryExp: " + binaryExp.substring(binaryExp.length() - expBits));
-    	System.out.println("result : " + result);
+    	//System.out.println("binaryExp: " + binaryExp.substring(binaryExp.length() - expBits));
+    	//System.out.println("result : " + result);
     	return result;   		
     }
 

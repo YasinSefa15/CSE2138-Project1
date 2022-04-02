@@ -8,7 +8,8 @@ public class UnsignedController extends BinaryController{
         this.value=value;
     }
 
-    public void convert(){
-        String binary = super.unsignedExtension(toBinary(this.value));
+    public String convert(String binary){
+        binary = super.unsignedExtension(toBinary(this.value));
+        return binary;
     }
 }

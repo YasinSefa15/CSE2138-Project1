@@ -2,9 +2,12 @@ package com.company;
 
 abstract class HexadecimalConverter {
 
-    void convertToHexa(String binary){
+    void convertToHexa(String binary, String byteOrdering){
     	String temp = "",result = "";
-    	int total = 0; 
+    	int total = 0;
+    	int current; 
+    	String resultHexa = "";
+    	char tempHexa = ' ';
     	
     	for(int i = 1; i<= binary.length(); i++) {
     		
@@ -33,8 +36,20 @@ abstract class HexadecimalConverter {
     				
     			total = 0;
     		}
-    		
     	}
-    	System.out.println("0x" + result);
+    	if(byteOrdering.equals("l")) {
+	    	for(int i = result.length() - 2; i >= 0; i = i - 2) {
+	    		tempHexa = result.charAt(i); 
+	    		resultHexa = resultHexa + tempHexa;
+	    		tempHexa = result.charAt(i+1);
+	    		resultHexa = resultHexa + tempHexa;
+			}
+	    	System.out.println("Little Endian : " + resultHexa);
+    	}
+    	else if(byteOrdering.equals("b")) {
+    		System.out.println("Big Endian : " + result);
+    	}
+    	
+    	
     }
 }

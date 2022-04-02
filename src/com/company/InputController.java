@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class InputController {
+public class InputController extends HexadecimalConverter{
 
     private final SignedController signedController;
     private final UnsignedController unsignedController;
@@ -35,28 +35,33 @@ public class InputController {
 
     public void operate(ArrayList<String> input){
 	     Scanner scanner = new Scanner(System.in);
-	     int sizeOfDataType;
-	     sizeOfDataType = 1;
+	     System.out.print("Byte ordering : ");
+	     String byteOrdering = scanner.nextLine();
+	     System.out.print("Floating point size : ");
+	     int sizeOfDataType = scanner.nextInt();
 	     
          for(int j = 0; j < input.size(); j++) {
              if(input.get(j).contains("u")) {
                  unsignedController.updateValues(sizeOfDataType,input.get(j));
-                 unsignedController.convert();
+                 System.out.println(input.get(j));
+                 super.convertToHexa(unsignedController.convert(input.get(j)), byteOrdering);
              }
              else if(input.get(j).contains(".")) {
                  floatingController.updateValues(sizeOfDataType,input.get(j));
                  System.out.println(input.get(j));
                  floatingController.convert();
                  floatingController.rounding(sizeOfDataType);
-                 floatingController.createFloatingPoint(sizeOfDataType);                
+                 super.convertToHexa(floatingController.createFloatingPoint(sizeOfDataType), byteOrdering);
              }
              else if(input.get(j).contains("-")) {
                  signedController.updateValues(sizeOfDataType,input.get(j));
-                 signedController.convert();
+                 System.out.println(input.get(j));
+                 super.convertToHexa(signedController.convert(input.get(j)), byteOrdering);
              }
              else {
                  signedController.updateValues(sizeOfDataType,input.get(j));
-                 signedController.convert();
+                 System.out.println(input.get(j));
+                 super.convertToHexa(signedController.convert(input.get(j)), byteOrdering);
              }
         }
     }

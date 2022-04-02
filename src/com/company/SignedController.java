@@ -8,15 +8,18 @@ public class SignedController extends BinaryController {
         this.value = value;
     }
 
-    public void convert(){
+    public String convert(String binary){
         String positiveValue;
         int base;
-        String binary = "";
+        binary = "";
         if (value.contains("-")){
-            binary = super.toNegativeBinary(value);
+            binary = signedExtension(super.toNegativeBinary(value));
+            return binary;
         }else{
             binary = super.unsignedExtension(super.toBinary(value));
+            return binary;
         }
+        
     }
 
 }
