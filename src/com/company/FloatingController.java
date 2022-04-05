@@ -33,8 +33,6 @@ public class FloatingController extends BinaryController{
             decimalBinary = super.toBinary(decimal);
         }
 
-        //System.out.println(" value " + this.value + " decimal " + decimal + " binary " + decimalBinary + " floating " + floating + " binary " + floatingBinary);
-
         if (decimalBinary.contains("1")) {
             this.exponent = decimalBinary.length() - decimalBinary.indexOf("1") - 1;
             this.mantissa = "1";
@@ -46,8 +44,6 @@ public class FloatingController extends BinaryController{
                 this.fraction = floatingBinary.substring(floatingBinary.indexOf("1") + 1);
             }
         }
-        //System.out.println("fraction: " + fraction);
-        //¬"¬System.out.println("mantissa : " + this.mantissa + " fraction " + this.fraction + " exponent " + this.exponent);
     }
 
     public void rounding(int size){
@@ -140,8 +136,6 @@ public class FloatingController extends BinaryController{
     	int exp = 0, expBits= 0;
     	String binaryExp = "",result = "";
     	
-    	
-    	
     	if(sizeOfDataType == 1)
     		expBits = 3;
     	else if(sizeOfDataType == 2)
@@ -161,8 +155,6 @@ public class FloatingController extends BinaryController{
             exp = exponent + bias;
         }
     	
-    	//System.out.println("exponent : " + exponent);
-    	
     	binaryExp = super.toBinary(Integer.toString(exp));
     	while(binaryExp.length() < expBits) {
     		binaryExp = "0" + binaryExp;
@@ -173,8 +165,6 @@ public class FloatingController extends BinaryController{
     	else {
     		result = "0" + binaryExp.substring(binaryExp.length() - expBits) + fraction;
     	}
-    	//System.out.println("binaryExp: " + binaryExp.substring(binaryExp.length() - expBits));
-    	//System.out.println("result : " + result);
     	return result;   		
     }
 

@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,6 +33,22 @@ public class InputController extends HexadecimalConverter{
         }
         return list;
     }
+    public void fileWrite(String hexa) {
+    	
+    	try
+    	{
+    	    String filename= "output.txt";
+    	    FileWriter fw = new FileWriter(filename,true); 
+    	    fw.write(hexa + "\n");
+    	    fw.close();
+    	}
+    	catch(IOException ioe)
+    	{
+    	    System.err.println("IOException: " + ioe.getMessage());
+    	}
+    }
+    
+    
 
     public void operate(ArrayList<String> input){
 	     Scanner scanner = new Scanner(System.in);
@@ -43,25 +60,21 @@ public class InputController extends HexadecimalConverter{
          for(int j = 0; j < input.size(); j++) {
              if(input.get(j).contains("u")) {
                  unsignedController.updateValues(sizeOfDataType,input.get(j));
-                 System.out.println(input.get(j));
-                 super.convertToHexa(unsignedController.convert(input.get(j)), byteOrdering);
+                 fileWrite(super.convertToHexa(unsignedController.convert(input.get(j)), byteOrdering));
              }
              else if(input.get(j).contains(".")) {
                  floatingController.updateValues(sizeOfDataType,input.get(j));
-                 System.out.println(input.get(j));
                  floatingController.convert();
                  floatingController.rounding(sizeOfDataType);
-                 super.convertToHexa(floatingController.createFloatingPoint(sizeOfDataType), byteOrdering);
+                 fileWrite(super.convertToHexa(floatingController.createFloatingPoint(sizeOfDataType), byteOrdering));
              }
              else if(input.get(j).contains("-")) {
                  signedController.updateValues(sizeOfDataType,input.get(j));
-                 System.out.println(input.get(j));
-                 super.convertToHexa(signedController.convert(input.get(j)), byteOrdering);
+                 fileWrite(super.convertToHexa(signedController.convert(input.get(j)), byteOrdering));
              }
              else {
                  signedController.updateValues(sizeOfDataType,input.get(j));
-                 System.out.println(input.get(j));
-                 super.convertToHexa(signedController.convert(input.get(j)), byteOrdering);
+                 fileWrite(super.convertToHexa(signedController.convert(input.get(j)), byteOrdering));
              }
         }
     }
